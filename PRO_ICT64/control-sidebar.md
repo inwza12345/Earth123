@@ -1,78 +1,51 @@
 ---
 layout: page
-title: Control Sidebar Plugin
+title: Control Sidebar Component
 ---
 
-The control sidebar component is part of AdminLTE's layout as the right sidebar. 
+Control sidebar is the right sidebar. It can be used for many purposes and is extremely easy to create. The sidebar ships with two different show/hide styles. The first allows the sidebar to slide over the content. The second pushes the content to make space for the sidebar. Either of these methods can be set through the [JavaScript options]({% link javascript/control-sidebar.md %}). 
 
-##### Usage
-This plugin can be activated as a jQuery plugin or using the data api. To activate the plugin, you must first add the HTML markup to your layout, then create the toggle button as shown below. 
+The following code should be placed within the `.wrapper` div. I prefer to place it right after the footer.
 
-###### HTML Markup
-{: .text-bold }
-```html
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
-```
+##### Control Sidebar Push
+{: .text-bold .text-dark}
 
-###### Data api
-{: .text-bold }
-Add `data-widget="control-sidebar"` to any button or a element to activate the plugin.
+By adding the `.control-sidebar-push` to `body`, the sidebar pushes the content away instead of overlaying the content.
+You can also add `.control-sidebar-push-slide` to `body`, to push the content away with an transition.
+
+##### Dark Sidebar Markup
+{: .text-bold .text-dark}
 
 ```html
-<a href="#" data-widget="control-sidebar">Toggle Control Sidebar</a>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <!-- Content of the sidebar goes here -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
 ```
 
-###### jQuery
-{: .text-bold }
-Just like all other AdminLTE plugins, you can also activate the toggle button using jQuery by running the following example. 
-```js
-$("#my-toggle-button").ControlSidebar('toggle');
+##### Light Sidebar Markup
+{: .text-bold .text-dark .mt-5}
+
+```html
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-light">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <!-- Content of the sidebar goes here -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
 ```
 
-##### Options
+##### Control Sidebar Toggle Markup
+{: .text-bold .text-dark .mt-5}
 
-|---
-| Name | Type | Default | Description
-|-|-|-|-
-|controlsidebarSlide | Boolean | TRUE | Whether the sidebar should slide over the content or push the content to make space for itself.
-|scrollbarTheme | Boolean | `os-theme-light` | Scrollbar Theme used while SideBar Fixed
-|scrollbarAutoHide | Boolean | `l` | Scrollbar auto-hide trigger
-|target | String | `.control-sidebar` | Target control-sidebar to handle multiple control-sidebars.
-{: .table .table-bordered .bg-light}
+Once you create the sidebar, you will need a toggle button to open/close it. By adding the attribute data-toggle="control-sidebar" to any button, it will automatically act as the toggle button. 
 
-> ##### Tip!
-> You can use any option via the data-attributes like this to enable auto collapse sidebar on 768 pixels width.
-> ```html
-> <a href="#" data-widget="control-sidebar" data-controlsidebar-slide="false">Toggle Control Sidebar</a>
-> ```
-{: .quote-info}
-
-##### Events
-{: .mt-4}
-
-|---
-| Event Type | Description
-|-|-
-|expanded.lte.controlsidebar | Triggered after a control sidebar expands.
-|collapsed.lte.controlsidebar | Triggered after a control sidebar collapses.
-{: .table .table-bordered .bg-light}
-
-Example: `$('#toggle-button').on('expanded.lte.controlsidebar', handleExpandedEvent)`
-
-
-##### Methods
-{: .mt-4}
-
-|---
-| Method | Description
-|-|-
-|collapse | Collapses the control-sidebar
-|show | Show's the control-sidebar
-|toggle | Toggles the state of the control-sidebar expanded and collapsed
-{: .table .table-bordered .bg-light}
-
-Example: `$('#toggle-button').ControlSidebar('toggle')`
+```html
+<a class="nav-link" data-widget="control-sidebar" href="#">Toggle Control Sidebar</a>
+```
